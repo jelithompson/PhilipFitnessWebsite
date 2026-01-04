@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Choose from our flexible fitness coaching plans. Personalized training programs designed to fit your goals and budget. Start your transformation today.">
+    <meta name="keywords" content="fitness plans, training packages, personal training pricing, coaching plans">
+    
+    <!-- Django: {% load static %} -->
+    <title>Training Plans & Pricing - Invest in Your Health | Philip Fitness</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ==========================================
+         NAVIGATION BAR
+         Django: {% include 'includes/navbar.html' %}
+         ========================================== -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                Philip<span>Fitness</span>
+            </a>
+            
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         PAGE HERO
+         ========================================== -->
+    <section class="hero" style="min-height: 400px;">
+        <div class="container">
+            <div class="hero-content" style="max-width: 100%; text-align: center;">
+                <h1>Choose Your Plan</h1>
+                <p>Flexible pricing designed to fit your goals and budget</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PRICING PLANS SECTION
+         Django: {% for plan in plans %}
+         Will integrate with Stripe/PayPal for real payments
+         ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>Investment in Your Health</h2>
+                <p>All plans include personalized coaching, nutrition guidance, and ongoing support</p>
+            </div>
+            
+            <!-- Pricing Grid -->
+            <!-- Django: This will loop through database plans -->
+            <div class="pricing-grid">
+                
+                <!-- STARTER PLAN -->
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <p style="color: var(--text-light); min-height: 50px;">
+                        Perfect for beginners looking to build a foundation
+                    </p>
+                    <div class="pricing-price">
+                        $97<span>/month</span>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li>Custom workout program</li>
+                        <li>Basic nutrition guidelines</li>
+                        <li>Monthly progress check-ins</li>
+                        <li>Email support (48hr response)</li>
+                        <li>Exercise video library access</li>
+                        <li>Mobile app access</li>
+                    </ul>
+                    
+                    <!-- PayPal-style button -->
+                    <!-- Django: Will use actual payment integration -->
+                    <!-- <form action="{% url 'create_subscription' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="plan_id" value="{{ plan.id }}">
+                        <button type="submit" class="btn btn-primary btn-block">Choose Plan</button>
+                    </form> -->
+                    
+                    <button 
+                        class="btn btn-primary btn-block payment-btn" 
+                        data-plan="Starter Plan" 
+                        data-price="97"
+                    >
+                        Get Started
+                    </button>
+                    
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light); text-align: center;">
+                        No contracts • Cancel anytime
+                    </p>
+                </div>
+                
+                <!-- PREMIUM PLAN (FEATURED) -->
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">MOST POPULAR</div>
+                    <h3>Premium</h3>
+                    <p style="color: var(--text-light); min-height: 50px;">
+                        For serious individuals ready for transformation
+                    </p>
+                    <div class="pricing-price">
+                        $197<span>/month</span>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li>Everything in Starter, plus:</li>
+                        <li>Personalized meal plans</li>
+                        <li>Bi-weekly 1-on-1 video calls</li>
+                        <li>Weekly progress tracking</li>
+                        <li>Priority email support (24hr)</li>
+                        <li>Custom supplement recommendations</li>
+                        <li>Workout adjustments anytime</li>
+                        <li>Private community access</li>
+                    </ul>
+                    
+                    <button 
+                        class="btn btn-primary btn-block payment-btn" 
+                        data-plan="Premium Plan" 
+                        data-price="197"
+                    >
+                        Get Started
+                    </button>
+                    
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light); text-align: center;">
+                        No contracts • Cancel anytime
+                    </p>
+                </div>
+                
+                <!-- ELITE PLAN -->
+                <div class="pricing-card">
+                    <h3>Elite</h3>
+                    <p style="color: var(--text-light); min-height: 50px;">
+                        Maximum results with full concierge service
+                    </p>
+                    <div class="pricing-price">
+                        $397<span>/month</span>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li>Everything in Premium, plus:</li>
+                        <li>Weekly 1-on-1 video coaching</li>
+                        <li>Daily check-ins & accountability</li>
+                        <li>Advanced body composition tracking</li>
+                        <li>Direct WhatsApp/SMS access</li>
+                        <li>Competition prep (if desired)</li>
+                        <li>Lifestyle & mindset coaching</li>
+                        <li>Priority support 24/7</li>
+                    </ul>
+                    
+                    <button 
+                        class="btn btn-primary btn-block payment-btn" 
+                        data-plan="Elite Plan" 
+                        data-price="397"
+                    >
+                        Get Started
+                    </button>
+                    
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light); text-align: center;">
+                        No contracts • Cancel anytime
+                    </p>
+                </div>
+                
+                <!-- VIP PLAN -->
+                <div class="pricing-card">
+                    <div class="pricing-badge" style="background-color: var(--primary-color);">VIP</div>
+                    <h3>VIP Transformation</h3>
+                    <p style="color: var(--text-light); min-height: 50px;">
+                        Ultimate transformation with in-person training
+                    </p>
+                    <div class="pricing-price">
+                        $797<span>/month</span>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li>Everything in Elite, plus:</li>
+                        <li>4x in-person training sessions/month</li>
+                        <li>Unlimited messaging access</li>
+                        <li>Custom supplement protocol</li>
+                        <li>Home workout equipment setup</li>
+                        <li>Quarterly body assessments</li>
+                        <li>Photoshoot preparation (optional)</li>
+                        <li>Lifetime program access</li>
+                    </ul>
+                    
+                    <button 
+                        class="btn btn-secondary btn-block payment-btn" 
+                        data-plan="VIP Transformation Plan" 
+                        data-price="797"
+                    >
+                        Apply Now
+                    </button>
+                    
+                    <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light); text-align: center;">
+                        Limited availability • Application required
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Money Back Guarantee -->
+            <div style="margin-top: 3rem; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
+                <div style="background-color: var(--light-bg); padding: 2rem; border-radius: var(--radius-lg); border: 2px solid var(--accent-color);">
+                    <h3 style="color: var(--accent-color); margin-bottom: 1rem;">
+                        💯 30-Day Money-Back Guarantee
+                    </h3>
+                    <p style="margin: 0; color: var(--text-light);">
+                        We're confident you'll love working with us. If you're not completely satisfied 
+                        within the first 30 days, we'll give you a full refund—no questions asked.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         COMPARISON TABLE
+         ========================================== -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>Compare Plans</h2>
+                <p>Find the perfect fit for your fitness journey</p>
+            </div>
+            
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; background-color: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
+                    <thead>
+                        <tr style="background-color: var(--dark-bg); color: white;">
+                            <th style="padding: 1.5rem; text-align: left; font-weight: 600;">Features</th>
+                            <th style="padding: 1.5rem; text-align: center; font-weight: 600;">Starter</th>
+                            <th style="padding: 1.5rem; text-align: center; font-weight: 600; background-color: var(--primary-color);">Premium</th>
+                            <th style="padding: 1.5rem; text-align: center; font-weight: 600;">Elite</th>
+                            <th style="padding: 1.5rem; text-align: center; font-weight: 600;">VIP</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 1.5rem; font-weight: 500;">Custom Workout Program</td>
+                            <td style="padding: 1rem; text-align: center;">✓</td>
+                            <td style="padding: 1rem; text-align: center; background-color: rgba(255,107,53,0.05);">✓</td>
+                            <td style="padding: 1rem; text-align: center;">✓</td>
+                            <td style="padding: 1rem; text-align: center;">✓</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 1.5rem; font-weight: 500;">Personalized Meal Plans</td>
+                            <td style="padding: 1rem; text-align: center;">Basic</td>
+                            <td style="padding: 1rem; text-align: center; background-color: rgba(255,107,53,0.05);">✓</td>
+                            <td style="padding: 1rem; text-align: center;">✓</td>
+                            <td style="padding: 1rem; text-align: center;">✓</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 1.5rem; font-weight: 500;">1-on-1 Video Calls</td>
+                            <td style="padding: 1rem; text-align: center;">—</td>
+                            <td style="padding: 1rem; text-align: center; background-color: rgba(255,107,53,0.05);">Bi-weekly</td>
+                            <td style="padding: 1rem; text-align: center;">Weekly</td>
+                            <td style="padding: 1rem; text-align: center;">Weekly</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 1.5rem; font-weight: 500;">In-Person Training</td>
+                            <td style="padding: 1rem; text-align: center;">—</td>
+                            <td style="padding: 1rem; text-align: center; background-color: rgba(255,107,53,0.05);">—</td>
+                            <td style="padding: 1rem; text-align: center;">—</td>
+                            <td style="padding: 1rem; text-align: center;">4x/month</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 1.5rem; font-weight: 500;">Support Response Time</td>
+                            <td style="padding: 1rem; text-align: center;">48hr</td>
+                            <td style="padding: 1rem; text-align: center; background-color: rgba(255,107,53,0.05);">24hr</td>
+                            <td style="padding: 1rem; text-align: center;">Same day</td>
+                            <td style="padding: 1rem; text-align: center;">Unlimited</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid var(--border-color);">
+                            <td style="padding: 1rem 1.5rem; font-weight: 500;">Progress Tracking</td>
+                            <td style="padding: 1rem; text-align: center;">Monthly</td>
+                            <td style="padding: 1rem; text-align: center; background-color: rgba(255,107,53,0.05);">Weekly</td>
+                            <td style="padding: 1rem; text-align: center;">Daily</td>
+                            <td style="padding: 1rem; text-align: center;">Daily+</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem 1.5rem; font-weight: 500;">Private Community</td>
+                            <td style="padding: 1rem; text-align: center;">—</td>
+                            <td style="padding: 1rem; text-align: center; background-color: rgba(255,107,53,0.05);">✓</td>
+                            <td style="padding: 1rem; text-align: center;">✓</td>
+                            <td style="padding: 1rem; text-align: center;">✓</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FAQ SECTION
+         ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>Pricing FAQs</h2>
+                <p>Common questions about our plans</p>
+            </div>
+            
+            <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        Are there any hidden fees?
+                    </h4>
+                    <p style="color: var(--text-light);">
+                        No hidden fees! The price you see is what you pay. No setup fees, 
+                        no cancellation fees, no surprises.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        Can I switch plans later?
+                    </h4>
+                    <p style="color: var(--text-light);">
+                        Absolutely! You can upgrade or downgrade your plan at any time. 
+                        Changes take effect at your next billing cycle.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        What payment methods do you accept?
+                    </h4>
+                    <p style="color: var(--text-light);">
+                        We accept all major credit cards, PayPal, and Apple Pay for your 
+                        convenience and security.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        Is there a discount for annual plans?
+                    </h4>
+                    <p style="color: var(--text-light);">
+                        Yes! Save 20% when you commit to an annual plan. Contact us to 
+                        discuss annual pricing options.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CTA SECTION
+         ========================================== -->
+    <section class="section section-dark">
+        <div class="container text-center">
+            <h2 style="color: white; margin-bottom: var(--spacing-sm);">Still Have Questions?</h2>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: var(--spacing-lg);">
+                Schedule a free consultation to discuss which plan is right for you
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="contact.html" class="btn btn-primary btn-large">Contact Us</a>
+                <a href="about.html" class="btn btn-outline btn-large">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PAYMENT MODAL
+         Django: Will integrate with actual payment processor
+         Stripe/PayPal integration point
+         ========================================== -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <h2>Complete Your Purchase</h2>
+            </div>
+            <div class="modal-body">
+                <!-- Content dynamically updated by JavaScript -->
+                <p style="text-align: center; color: var(--text-light);">Processing...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         FOOTER
+         Django: {% include 'includes/footer.html' %}
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Philip<span style="color: var(--primary-color);">Fitness</span></h3>
+                    <p>
+                        Transform your body and mind with professional fitness coaching. 
+                        We're dedicated to helping you achieve your health and wellness goals.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook"><span>f</span></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><span>📷</span></a>
+                        <a href="#" class="social-icon" aria-label="Twitter"><span>🐦</span></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><span>▶</span></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="plans.html">Plans & Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Personal Training</a></li>
+                        <li><a href="#">Nutrition Coaching</a></li>
+                        <li><a href="#">Group Classes</a></li>
+                        <li><a href="#">Online Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📧 info@philipfitness.com</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>📍 123 Fitness Street<br>Health City, HC 12345</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Philip Fitness. All rights reserved. | 
+                   <a href="#">Privacy Policy</a> | 
+                   <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <!-- Django: <script src="{% static 'js/main.js' %}"></script> -->
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transform your fitness journey with personalized training programs. Professional online fitness coaching and workout plans tailored to your goals.">
+    <meta name="keywords" content="fitness, personal training, workout plans, online coaching, health, wellness">
+    <meta name="author" content="Philip Fitness">
+    
+    <!-- Django: Add {% load static %} and use {% static 'css/styles.css' %} -->
+    <title>Philip Fitness - Transform Your Body, Transform Your Life</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <!-- Django: <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}"> -->
+</head>
+<body>
+    <!-- ==========================================
+         NAVIGATION BAR
+         Django: {% include 'includes/navbar.html' %}
+         Will use {% url 'page_name' %} for navigation
+         ========================================== -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                Philip<span>Fitness</span>
+            </a>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Navigation Menu -->
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <!-- Django: Add authentication links -->
+                <!-- {% if user.is_authenticated %}
+                <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}" class="btn btn-primary">Login</a></li>
+                {% endif %} -->
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-split">
+                <div class="hero-content">
+                    <h1>Transform Your Body, Transform Your Life</h1>
+                    <p>
+                        Get personalized fitness coaching that fits your lifestyle. 
+                        Professional training programs designed to help you reach your goals faster.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="plans.html" class="btn btn-primary btn-large">Start Your Journey</a>
+                        <a href="about.html" class="btn btn-outline btn-large">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <!-- Django: <img src="{% static 'images/hero-fitness.jpg' %}" alt="Fitness Training"> -->
+                    <!-- Placeholder for hero image -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FEATURES SECTION
+         ========================================== -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>Why Choose Philip Fitness?</h2>
+                <p>Everything you need to achieve your fitness goals in one place</p>
+            </div>
+            
+            <!-- Django: {% for feature in features %} -->
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💪</div>
+                    <h3>Personalized Plans</h3>
+                    <p>Custom workout programs tailored to your fitness level, goals, and schedule. No cookie-cutter solutions.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your workouts anywhere, anytime. Track your progress on the go with our mobile-optimized platform.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍🏫</div>
+                    <h3>Expert Coaching</h3>
+                    <p>Get guidance from certified trainers with years of experience helping clients achieve real results.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your improvements with detailed analytics, body measurements, and performance metrics.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🥗</div>
+                    <h3>Nutrition Guidance</h3>
+                    <p>Meal plans and nutritional advice to fuel your workouts and optimize your results.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>24/7 Support</h3>
+                    <p>Direct messaging with your coach. Get answers to your questions and stay motivated every day.</p>
+                </div>
+            </div>
+            <!-- Django: {% endfor %} -->
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STATS SECTION
+         ========================================== -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2 style="color: white;">Results That Speak for Themselves</h2>
+                <p style="color: rgba(255,255,255,0.8);">Join hundreds of clients who have transformed their lives</p>
+            </div>
+            
+            <!-- Django: Pull these from database statistics -->
+            <div class="features-grid">
+                <div class="text-center">
+                    <h1 style="color: var(--primary-color); margin-bottom: 0;">500+</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem;">Active Clients</p>
+                </div>
+                
+                <div class="text-center">
+                    <h1 style="color: var(--primary-color); margin-bottom: 0;">10k+</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem;">Workouts Completed</p>
+                </div>
+                
+                <div class="text-center">
+                    <h1 style="color: var(--primary-color); margin-bottom: 0;">95%</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem;">Success Rate</p>
+                </div>
+                
+                <div class="text-center">
+                    <h1 style="color: var(--primary-color); margin-bottom: 0;">5★</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem;">Average Rating</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         TESTIMONIALS SECTION
+         Django: {% for testimonial in testimonials %}
+         ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>What Our Clients Say</h2>
+                <p>Real transformations from real people</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "Philip's program changed my life! I lost 30 pounds in 3 months and gained 
+                        confidence I never knew I had. The personalized approach made all the difference."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">SM</div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>Lost 30 lbs in 3 months</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "As a busy professional, I thought I'd never have time to get in shape. 
+                        The flexible workout plans fit perfectly into my schedule. Best investment I've made!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">JC</div>
+                        <div class="testimonial-info">
+                            <h4>James Chen</h4>
+                            <p>Gained 15 lbs muscle</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">
+                        "The nutrition guidance was a game-changer. I finally understand how to fuel 
+                        my body properly. Combined with the workouts, the results have been amazing!"
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">ER</div>
+                        <div class="testimonial-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Transformed in 6 months</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CALL TO ACTION
+         ========================================== -->
+    <section class="section section-dark">
+        <div class="container text-center">
+            <h2 style="color: white; margin-bottom: var(--spacing-sm);">Ready to Start Your Transformation?</h2>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: var(--spacing-lg);">
+                Join our community today and get access to personalized training programs
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="plans.html" class="btn btn-primary btn-large">View Plans</a>
+                <a href="contact.html" class="btn btn-outline btn-large">Contact Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         Django: {% include 'includes/footer.html' %}
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- About Section -->
+                <div class="footer-section">
+                    <h3>Philip<span style="color: var(--primary-color);">Fitness</span></h3>
+                    <p>
+                        Transform your body and mind with professional fitness coaching. 
+                        We're dedicated to helping you achieve your health and wellness goals.
+                    </p>
+                    <div class="social-icons">
+                        <!-- Django: Links will come from settings -->
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <span>f</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <span>📷</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <span>🐦</span>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="YouTube">
+                            <span>▶</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="plans.html">Plans & Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <!-- Django: Add dynamic links -->
+                        <!-- <li><a href="{% url 'blog' %}">Blog</a></li>
+                        <li><a href="{% url 'faq' %}">FAQ</a></li> -->
+                    </ul>
+                </div>
+                
+                <!-- Services -->
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Personal Training</a></li>
+                        <li><a href="#">Nutrition Coaching</a></li>
+                        <li><a href="#">Group Classes</a></li>
+                        <li><a href="#">Online Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📧 info@philipfitness.com</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>📍 123 Fitness Street<br>Health City, HC 12345</p>
+                    <!-- Django: Pull from settings/database -->
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Philip Fitness. All rights reserved. | 
+                   <a href="#">Privacy Policy</a> | 
+                   <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <!-- Django: <script src="{% static 'js/main.js' %}"></script> -->
+    <script src="main.js"></script>
+</body>
+</html>

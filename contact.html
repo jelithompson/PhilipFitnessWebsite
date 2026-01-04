@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Get in touch with Philip Fitness. Contact us for personal training inquiries, program information, or schedule a free consultation.">
+    <meta name="keywords" content="contact fitness coach, fitness consultation, personal training inquiry">
+    
+    <!-- Django: {% load static %} -->
+    <title>Contact Us - Get Your Free Consultation | Philip Fitness</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ==========================================
+         NAVIGATION BAR
+         Django: {% include 'includes/navbar.html' %}
+         ========================================== -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                Philip<span>Fitness</span>
+            </a>
+            
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         PAGE HERO
+         ========================================== -->
+    <section class="hero" style="min-height: 400px;">
+        <div class="container">
+            <div class="hero-content" style="max-width: 100%; text-align: center;">
+                <h1>Get in Touch</h1>
+                <p>Have questions? We're here to help you start your fitness journey</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CONTACT SECTION
+         Django: Form will post to {% url 'contact_submit' %}
+         Will include {% csrf_token %}
+         ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+                
+                <!-- Contact Form -->
+                <div>
+                    <h2 class="mb-md">Send Us a Message</h2>
+                    <p class="mb-lg" style="color: var(--text-light);">
+                        Fill out the form below and we'll get back to you within 24 hours. 
+                        For urgent inquiries, please call us directly.
+                    </p>
+                    
+                    <!-- Django: <form method="POST" action="{% url 'contact_submit' %}" id="contactForm"> -->
+                    <!-- {% csrf_token %} -->
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="form-label">Full Name *</label>
+                            <input 
+                                type="text" 
+                                id="name" 
+                                name="name" 
+                                class="form-input" 
+                                placeholder="John Doe"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email Address *</label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                placeholder="john@example.com"
+                                required
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-input" 
+                                placeholder="(555) 123-4567"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Subject *</label>
+                            <select id="subject" name="subject" class="form-select" required>
+                                <option value="">Select a subject...</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="training">Personal Training</option>
+                                <option value="nutrition">Nutrition Coaching</option>
+                                <option value="plans">Pricing & Plans</option>
+                                <option value="consultation">Free Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Message *</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                class="form-textarea" 
+                                placeholder="Tell us about your fitness goals and how we can help..."
+                                required
+                            ></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-large btn-block">
+                            Send Message
+                        </button>
+                        
+                        <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--text-light);">
+                            * Required fields
+                        </p>
+                    </form>
+                    <!-- Django: </form> -->
+                </div>
+                
+                <!-- Contact Information -->
+                <div>
+                    <h2 class="mb-md">Contact Information</h2>
+                    
+                    <!-- Contact Details -->
+                    <div style="background-color: var(--light-bg); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                📧 Email
+                            </h4>
+                            <p style="margin: 0; color: var(--text-dark);">
+                                <a href="mailto:info@philipfitness.com" style="color: var(--text-dark);">info@philipfitness.com</a>
+                            </p>
+                            <p style="margin: 0; font-size: 0.875rem; color: var(--text-light);">
+                                We respond within 24 hours
+                            </p>
+                        </div>
+                        
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                📞 Phone
+                            </h4>
+                            <p style="margin: 0; color: var(--text-dark);">
+                                <a href="tel:+15551234567" style="color: var(--text-dark);">(555) 123-4567</a>
+                            </p>
+                            <p style="margin: 0; font-size: 0.875rem; color: var(--text-light);">
+                                Mon-Fri: 8am - 8pm EST
+                            </p>
+                        </div>
+                        
+                        <div>
+                            <h4 style="color: var(--primary-color); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;">
+                                📍 Location
+                            </h4>
+                            <p style="margin: 0; color: var(--text-dark);">
+                                123 Fitness Street<br>
+                                Health City, HC 12345<br>
+                                United States
+                            </p>
+                            <!-- Django: Will pull from settings -->
+                        </div>
+                    </div>
+                    
+                    <!-- Business Hours -->
+                    <div style="background-color: var(--light-bg); padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 2rem;">
+                        <h3 class="mb-md">Business Hours</h3>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: var(--text-dark); font-weight: 600;">Monday - Friday</span>
+                            <span style="color: var(--text-light);">6:00 AM - 9:00 PM</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.75rem;">
+                            <span style="color: var(--text-dark); font-weight: 600;">Saturday</span>
+                            <span style="color: var(--text-light);">8:00 AM - 6:00 PM</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between;">
+                            <span style="color: var(--text-dark); font-weight: 600;">Sunday</span>
+                            <span style="color: var(--text-light);">10:00 AM - 4:00 PM</span>
+                        </div>
+                        <!-- Django: Pull from database -->
+                    </div>
+                    
+                    <!-- Social Media -->
+                    <div style="background-color: var(--light-bg); padding: 2rem; border-radius: var(--radius-lg);">
+                        <h3 class="mb-md">Follow Us</h3>
+                        <p style="color: var(--text-light); margin-bottom: 1rem;">
+                            Stay connected and get daily fitness tips, motivation, and updates
+                        </p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon" aria-label="Facebook" style="background-color: #1877F2;">
+                                <span style="color: white;">f</span>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Instagram" style="background-color: #E4405F;">
+                                <span style="color: white;">📷</span>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="Twitter" style="background-color: #1DA1F2;">
+                                <span style="color: white;">🐦</span>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="YouTube" style="background-color: #FF0000;">
+                                <span style="color: white;">▶</span>
+                            </a>
+                            <a href="#" class="social-icon" aria-label="LinkedIn" style="background-color: #0A66C2;">
+                                <span style="color: white;">in</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FAQ SECTION
+         Django: {% for faq in faqs %}
+         ========================================== -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>Frequently Asked Questions</h2>
+                <p>Quick answers to common questions</p>
+            </div>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div style="background-color: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        How quickly will I see results?
+                    </h4>
+                    <p style="margin: 0; color: var(--text-light);">
+                        Results vary by individual, but most clients start seeing noticeable changes 
+                        within 4-6 weeks of consistent training and nutrition adherence. Long-term, 
+                        sustainable results typically develop over 12-16 weeks.
+                    </p>
+                </div>
+                
+                <div style="background-color: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        Do I need any special equipment?
+                    </h4>
+                    <p style="margin: 0; color: var(--text-light);">
+                        That depends on your chosen plan. We offer programs for home training with 
+                        minimal equipment, as well as gym-based programs. We'll customize your plan 
+                        based on your available resources.
+                    </p>
+                </div>
+                
+                <div style="background-color: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        Can I cancel my subscription anytime?
+                    </h4>
+                    <p style="margin: 0; color: var(--text-light);">
+                        Yes! All our plans are month-to-month with no long-term contracts. You can 
+                        cancel anytime before your next billing cycle. We believe in earning your 
+                        business every month.
+                    </p>
+                </div>
+                
+                <div style="background-color: white; padding: 2rem; border-radius: var(--radius-lg); margin-bottom: 1.5rem; box-shadow: var(--shadow-sm);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        What makes your coaching different?
+                    </h4>
+                    <p style="margin: 0; color: var(--text-light);">
+                        We focus on personalization, education, and sustainable results. You're not 
+                        just getting a workout plan—you're getting a comprehensive fitness solution 
+                        with direct coach access, nutrition guidance, and ongoing support.
+                    </p>
+                </div>
+                
+                <div style="background-color: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.75rem;">
+                        Do you offer a free trial or consultation?
+                    </h4>
+                    <p style="margin: 0; color: var(--text-light);">
+                        Yes! We offer a free 30-minute consultation call to discuss your goals, 
+                        assess your current fitness level, and determine which program is right 
+                        for you. No commitment required.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CTA SECTION
+         ========================================== -->
+    <section class="section section-dark">
+        <div class="container text-center">
+            <h2 style="color: white; margin-bottom: var(--spacing-sm);">Ready to Get Started?</h2>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.25rem; margin-bottom: var(--spacing-lg); max-width: 700px; margin-left: auto; margin-right: auto;">
+                Schedule your free consultation today and take the first step toward your fitness goals
+            </p>
+            <a href="plans.html" class="btn btn-primary btn-large">View Our Plans</a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         Django: {% include 'includes/footer.html' %}
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Philip<span style="color: var(--primary-color);">Fitness</span></h3>
+                    <p>
+                        Transform your body and mind with professional fitness coaching. 
+                        We're dedicated to helping you achieve your health and wellness goals.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook"><span>f</span></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><span>📷</span></a>
+                        <a href="#" class="social-icon" aria-label="Twitter"><span>🐦</span></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><span>▶</span></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="plans.html">Plans & Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Personal Training</a></li>
+                        <li><a href="#">Nutrition Coaching</a></li>
+                        <li><a href="#">Group Classes</a></li>
+                        <li><a href="#">Online Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📧 info@philipfitness.com</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>📍 123 Fitness Street<br>Health City, HC 12345</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Philip Fitness. All rights reserved. | 
+                   <a href="#">Privacy Policy</a> | 
+                   <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

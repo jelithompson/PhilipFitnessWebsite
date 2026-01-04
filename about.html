@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Meet Philip - Your certified fitness coach dedicated to helping you achieve your health and fitness goals with personalized training programs.">
+    <meta name="keywords" content="fitness coach, personal trainer, certified trainer, fitness expert">
+    
+    <!-- Django: {% load static %} -->
+    <title>About Philip - Certified Fitness Coach | Philip Fitness</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ==========================================
+         NAVIGATION BAR
+         Django: {% include 'includes/navbar.html' %}
+         ========================================== -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                Philip<span>Fitness</span>
+            </a>
+            
+            <button class="navbar-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="navbar-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="plans.html">Plans</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         PAGE HERO
+         ========================================== -->
+    <section class="hero" style="min-height: 400px;">
+        <div class="container">
+            <div class="hero-content" style="max-width: 100%; text-align: center;">
+                <h1>About Philip Fitness</h1>
+                <p>Empowering individuals to reach their full potential through fitness</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         COACH BIO SECTION
+         Django: {{ coach.bio|safe }}
+         ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;">
+                <!-- Coach Image -->
+                <div>
+                    <div style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); 
+                                border-radius: var(--radius-lg); 
+                                height: 500px; 
+                                display: flex; 
+                                align-items: center; 
+                                justify-content: center;
+                                border: 3px dashed rgba(255,255,255,0.5);">
+                        <p style="color: white; font-size: 1.25rem;">Coach Photo Placeholder</p>
+                    </div>
+                </div>
+                
+                <!-- Coach Info -->
+                <div>
+                    <h2 class="mb-md">Meet Your Coach</h2>
+                    <p class="mb-sm">
+                        Hi, I'm Philip! With over 10 years of experience in the fitness industry, 
+                        I've dedicated my career to helping people transform their lives through 
+                        personalized fitness coaching and sustainable lifestyle changes.
+                    </p>
+                    <p class="mb-sm">
+                        My journey into fitness began when I struggled with my own health challenges. 
+                        Through dedication, education, and the right guidance, I completely transformed 
+                        my body and mind. That experience inspired me to become a certified personal 
+                        trainer and help others achieve their goals.
+                    </p>
+                    <p class="mb-md">
+                        I believe fitness is not just about physical transformation—it's about building 
+                        confidence, discipline, and a healthier relationship with your body. My approach 
+                        combines science-based training methods with personalized nutrition guidance to 
+                        deliver real, lasting results.
+                    </p>
+                    
+                    <a href="contact.html" class="btn btn-primary">Work With Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CREDENTIALS SECTION
+         Django: {% for credential in credentials %}
+         ========================================== -->
+    <section class="section section-light">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>Certifications & Credentials</h2>
+                <p>Backed by industry-leading certifications and continuous education</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>NASM Certified</h3>
+                    <p>National Academy of Sports Medicine Certified Personal Trainer</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🏋️</div>
+                    <h3>Strength Specialist</h3>
+                    <p>Advanced certification in strength and conditioning techniques</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🥗</div>
+                    <h3>Nutrition Coach</h3>
+                    <p>Certified in sports nutrition and meal planning strategies</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🧘</div>
+                    <h3>Functional Training</h3>
+                    <p>Specialist in functional movement and injury prevention</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>B.S. Exercise Science</h3>
+                    <p>Bachelor of Science in Exercise Science and Kinesiology</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>10+ Years Experience</h3>
+                    <p>Over a decade of transforming lives through fitness coaching</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PHILOSOPHY SECTION
+         ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>My Coaching Philosophy</h2>
+                <p>The principles that guide my approach to fitness coaching</p>
+            </div>
+            
+            <div style="max-width: 900px; margin: 0 auto;">
+                <!-- Principle 1 -->
+                <div style="margin-bottom: 2.5rem; padding: 2rem; background-color: var(--light-bg); border-radius: var(--radius-lg); border-left: 4px solid var(--primary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">1. Personalization Over Templates</h3>
+                    <p>
+                        Every person is unique, with different goals, abilities, and lifestyles. 
+                        I don't believe in one-size-fits-all programs. Instead, I create customized 
+                        training and nutrition plans tailored specifically to your individual needs 
+                        and circumstances.
+                    </p>
+                </div>
+                
+                <!-- Principle 2 -->
+                <div style="margin-bottom: 2.5rem; padding: 2rem; background-color: var(--light-bg); border-radius: var(--radius-lg); border-left: 4px solid var(--secondary-color);">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">2. Sustainable Progress</h3>
+                    <p>
+                        Quick fixes and crash diets don't work long-term. I focus on building 
+                        sustainable habits and making gradual improvements that last a lifetime. 
+                        Real transformation takes time, and I'm here to support you every step 
+                        of the way.
+                    </p>
+                </div>
+                
+                <!-- Principle 3 -->
+                <div style="margin-bottom: 2.5rem; padding: 2rem; background-color: var(--light-bg); border-radius: var(--radius-lg); border-left: 4px solid var(--accent-color);">
+                    <h3 style="color: var(--accent-color); margin-bottom: 1rem;">3. Education & Empowerment</h3>
+                    <p>
+                        I don't just tell you what to do—I teach you why you're doing it. 
+                        Understanding the science behind your training helps you make informed 
+                        decisions and builds the knowledge you need to maintain your results 
+                        independently.
+                    </p>
+                </div>
+                
+                <!-- Principle 4 -->
+                <div style="padding: 2rem; background-color: var(--light-bg); border-radius: var(--radius-lg); border-left: 4px solid var(--primary-color);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 1rem;">4. Holistic Approach</h3>
+                    <p>
+                        Fitness isn't just about workouts—it's about nutrition, recovery, sleep, 
+                        stress management, and mindset. I take a comprehensive approach that 
+                        addresses all aspects of health and wellness to optimize your results.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         STATS SECTION
+         ========================================== -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2 style="color: white;">By The Numbers</h2>
+                <p style="color: rgba(255,255,255,0.8);">A track record of proven results</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="text-center">
+                    <h1 style="color: var(--primary-color); margin-bottom: 0;">500+</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.125rem;">Clients Transformed</p>
+                </div>
+                
+                <div class="text-center">
+                    <h1 style="color: var(--primary-color); margin-bottom: 0;">10+</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.125rem;">Years Experience</p>
+                </div>
+                
+                <div class="text-center">
+                    <h1 style="color: var(--primary-color); margin-bottom: 0;">15k+</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.125rem;">Training Sessions</p>
+                </div>
+                
+                <div class="text-center">
+                    <h1 style="color: var(--primary-color); margin-bottom: 0;">98%</h1>
+                    <p style="color: rgba(255,255,255,0.9); font-size: 1.125rem;">Client Satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         SPECIALTIES SECTION
+         ========================================== -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center mb-lg">
+                <h2>Training Specialties</h2>
+                <p>Areas where I can help you excel</p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="padding: 1.5rem; border: 2px solid var(--border-color); border-radius: var(--radius-lg); transition: var(--transition-normal);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Weight Loss</h4>
+                    <p style="margin: 0;">Sustainable fat loss strategies that work with your lifestyle</p>
+                </div>
+                
+                <div style="padding: 1.5rem; border: 2px solid var(--border-color); border-radius: var(--radius-lg);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Muscle Building</h4>
+                    <p style="margin: 0;">Science-based hypertrophy training for lean muscle gains</p>
+                </div>
+                
+                <div style="padding: 1.5rem; border: 2px solid var(--border-color); border-radius: var(--radius-lg);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Athletic Performance</h4>
+                    <p style="margin: 0;">Enhance speed, power, and overall athletic capabilities</p>
+                </div>
+                
+                <div style="padding: 1.5rem; border: 2px solid var(--border-color); border-radius: var(--radius-lg);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Nutrition Coaching</h4>
+                    <p style="margin: 0;">Personalized meal plans and sustainable eating strategies</p>
+                </div>
+                
+                <div style="padding: 1.5rem; border: 2px solid var(--border-color); border-radius: var(--radius-lg);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Injury Prevention</h4>
+                    <p style="margin: 0;">Corrective exercises and mobility work to keep you healthy</p>
+                </div>
+                
+                <div style="padding: 1.5rem; border: 2px solid var(--border-color); border-radius: var(--radius-lg);">
+                    <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">Lifestyle Transformation</h4>
+                    <p style="margin: 0;">Complete health overhaul including mindset and habits</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         CTA SECTION
+         ========================================== -->
+    <section class="section section-light">
+        <div class="container text-center">
+            <h2 class="mb-md">Ready to Transform Your Life?</h2>
+            <p style="font-size: 1.25rem; max-width: 700px; margin: 0 auto var(--spacing-lg);">
+                Let's work together to create a personalized fitness plan that fits your goals, 
+                your schedule, and your lifestyle.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="plans.html" class="btn btn-primary btn-large">View Training Plans</a>
+                <a href="contact.html" class="btn btn-outline btn-large">Schedule Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         Django: {% include 'includes/footer.html' %}
+         ========================================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Philip<span style="color: var(--primary-color);">Fitness</span></h3>
+                    <p>
+                        Transform your body and mind with professional fitness coaching. 
+                        We're dedicated to helping you achieve your health and wellness goals.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook"><span>f</span></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><span>📷</span></a>
+                        <a href="#" class="social-icon" aria-label="Twitter"><span>🐦</span></a>
+                        <a href="#" class="social-icon" aria-label="YouTube"><span>▶</span></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="plans.html">Plans & Pricing</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Personal Training</a></li>
+                        <li><a href="#">Nutrition Coaching</a></li>
+                        <li><a href="#">Group Classes</a></li>
+                        <li><a href="#">Online Programs</a></li>
+                        <li><a href="#">Corporate Wellness</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>📧 info@philipfitness.com</p>
+                    <p>📞 (555) 123-4567</p>
+                    <p>📍 123 Fitness Street<br>Health City, HC 12345</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Philip Fitness. All rights reserved. | 
+                   <a href="#">Privacy Policy</a> | 
+                   <a href="#">Terms of Service</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
