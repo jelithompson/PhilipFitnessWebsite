@@ -1,0 +1,77 @@
+# ==========================================
+# WRANGLER CONFIGURATION FOR CLOUDFLARE PAGES
+# This file configures Cloudflare Workers/Pages deployment
+# ==========================================
+
+name = "philip-fitness-website"
+compatibility_date = "2024-01-01"
+
+# Pages configuration
+pages_build_output_dir = "./public"
+
+# Environment variables (use wrangler secret for sensitive data)
+# Add these via: wrangler secret put VARIABLE_NAME
+[vars]
+# SITE_URL = "https://yourdomain.pages.dev"  # Your Cloudflare Pages URL
+# CONTACT_EMAIL = "info@philipfitness.com"   # Where contact form emails go
+
+# ==========================================
+# SECRETS (DO NOT COMMIT THESE VALUES)
+# Set via: wrangler secret put SECRET_NAME
+# ==========================================
+# Required when integrating email services:
+# - RESEND_API_KEY (for Resend email service)
+# - MAILGUN_API_KEY (for Mailgun email service)
+# - SENDGRID_API_KEY (for SendGrid email service)
+# - DJANGO_API_URL (when connecting to Django backend)
+# - API_KEY (for authenticating with Django backend)
+
+# ==========================================
+# PRODUCTION ENVIRONMENT
+# ==========================================
+[env.production]
+name = "philip-fitness-website"
+# vars will inherit from main section unless overridden
+# SITE_URL = "https://philipfitness.com"
+
+# ==========================================
+# DEVELOPMENT/PREVIEW ENVIRONMENT
+# ==========================================
+[env.preview]
+name = "philip-fitness-website-preview"
+# SITE_URL = "https://preview.philipfitness.pages.dev"
+
+# ==========================================
+# OBSERVABILITY (Optional)
+# ==========================================
+# [observability]
+# enabled = true
+# head_sampling_rate = 1
+
+# ==========================================
+# DEPLOYMENT NOTES
+# ==========================================
+# 
+# 1. Install Wrangler CLI:
+#    npm install -g wrangler
+#
+# 2. Login to Cloudflare:
+#    wrangler login
+#
+# 3. Deploy to Cloudflare Pages:
+#    wrangler pages deploy public
+#
+# 4. Set environment secrets:
+#    wrangler secret put RESEND_API_KEY
+#    wrangler secret put CONTACT_EMAIL
+#
+# 5. For local development:
+#    wrangler pages dev public
+#
+# 6. To test the contact form locally:
+#    - Run: wrangler pages dev public
+#    - Visit: http://localhost:8788
+#    - Submit the contact form
+#    - Check console logs for form data
+#
+# ==========================================

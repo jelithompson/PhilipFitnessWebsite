@@ -74,7 +74,20 @@
                     
                     <!-- Django: <form method="POST" action="{% url 'contact_submit' %}" id="contactForm"> -->
                     <!-- {% csrf_token %} -->
+                    <!-- Cloudflare Worker: Form submits to /functions/contact via JavaScript -->
                     <form id="contactForm">
+                        <!-- HONEYPOT FIELD - Hidden from users, catches bots -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <label for="website">Website (leave blank)</label>
+                            <input 
+                                type="text" 
+                                id="website" 
+                                name="website" 
+                                tabindex="-1" 
+                                autocomplete="off"
+                            >
+                        </div>
+                        
                         <div class="form-group">
                             <label for="name" class="form-label">Full Name *</label>
                             <input 

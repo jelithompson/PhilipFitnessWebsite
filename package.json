@@ -1,0 +1,29 @@
+{
+  "name": "philip-fitness-website",
+  "version": "2.0.0",
+  "description": "Modern fitness coaching website with Cloudflare Pages + Workers",
+  "scripts": {
+    "dev": "wrangler pages dev public",
+    "deploy": "wrangler pages deploy public",
+    "deploy:production": "wrangler pages deploy public --branch=main",
+    "deploy:preview": "wrangler pages deploy public --branch=preview",
+    "logs": "wrangler pages deployment tail",
+    "secret:set": "wrangler secret put"
+  },
+  "keywords": [
+    "fitness",
+    "cloudflare",
+    "cloudflare-pages",
+    "cloudflare-workers",
+    "static-site",
+    "serverless"
+  ],
+  "author": "Philip Fitness",
+  "license": "MIT",
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

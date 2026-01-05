@@ -170,28 +170,16 @@ function closePaymentModal() {
 
 // ==========================================
 // CONTACT FORM
-// Django: Will submit to backend API
+// Cloudflare Worker: Submits to /functions/contact
+// Future: Will integrate with Django backend API
 // ==========================================
 function initContactForm() {
     const contactForm = document.getElementById('contactForm');
     
     if (!contactForm) return;
     
-    contactForm.addEventListener('submit', function(e) {
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone')?.value || '',
-            message: document.getElementById('message').value
-        };
-        
-        // Validate form
-        if (!validateContactForm(formData)) {
-            return;
-        }
         
         // Show loading state
         const submitButton = contactForm.querySelector('button[type="submit"]');
@@ -200,68 +188,63 @@ function initContactForm() {
         submitButton.disabled = true;
         submitButton.classList.add('loading');
         
-        // Simulate form submission
-        // Django: Replace with actual AJAX call to backend
-        setTimeout(function() {
-            // Show success message
-            showFormSuccess('Thank you for your message! We\'ll get back to you within 24 hours.');
+        try {
+            // Create FormData object from the form
+            const formData = new FormData(contactForm);
             
-            // Reset form
-            contactForm.reset();
+            // Submit to Cloudflare Worker endpoint
+            const response = await fetch('/functions/contact', {
+                method: 'POST',
+                body: formData
+            });
             
-            // Reset button
+            // Parse JSON response
+            const result = await response.json();
+            
+            if (result.success) {
+                // Show success message
+                showFormSuccess(result.message);
+                
+                // Reset form
+                contactForm.reset();
+                
+                // Log success (for debugging)
+                console.log('Form submitted successfully:', result.data);
+            } else {
+                // Show error message(s)
+                const errorMessage = result.errors 
+                    ? result.errors.join('<br>') 
+                    : result.message;
+                showFormError(errorMessage);
+                
+                console.error('Form submission failed:', result);
+            }
+            
+        } catch (error) {
+            // Network error or other exception
+            console.error('Form submission error:', error);
+            showFormError('An error occurred while sending your message. Please try again or contact us directly.');
+        } finally {
+            // Reset button state
             submitButton.textContent = originalButtonText;
             submitButton.disabled = false;
             submitButton.classList.remove('loading');
-            
-            // Django: Here you would:
-            // fetch('/api/contact/', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'X-CSRFToken': getCookie('csrftoken')
-            //     },
-            //     body: JSON.stringify(formData)
-            // })
-            // .then(response => response.json())
-            // .then(data => {
-            //     showFormSuccess(data.message);
-            //     contactForm.reset();
-            // })
-            // .catch(error => {
-            //     showFormError('An error occurred. Please try again.');
-            // });
-            
-            console.log('Form submitted:', formData);
-        }, 1500);
+        }
+        
+        // Django Integration Note:
+        // When migrating to Django backend, update the fetch URL:
+        // const response = await fetch('/api/contact/', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json',
+        //         'X-CSRFToken': getCookie('csrftoken')
+        //     },
+        //     body: JSON.stringify(Object.fromEntries(formData))
+        // });
     });
 }
 
-// Validate contact form
-function validateContactForm(data) {
-    const errors = [];
-    
-    if (!data.name || data.name.trim().length < 2) {
-        errors.push('Please enter a valid name');
-    }
-    
-    if (!data.email || !isValidEmail(data.email)) {
-        errors.push('Please enter a valid email address');
-    }
-    
-    if (!data.message || data.message.trim().length < 10) {
-        errors.push('Please enter a message (at least 10 characters)');
-    }
-    
-    if (errors.length > 0) {
-        showFormError(errors.join('<br>'));
-        return false;
-    }
-    
-    return true;
-}
-
-// Email validation helper
+// Email validation helper (kept for future use)
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);

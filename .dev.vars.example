@@ -1,0 +1,37 @@
+# ==========================================
+# DEVELOPMENT ENVIRONMENT VARIABLES
+# Copy this file to .dev.vars and fill in your values
+# DO NOT COMMIT .dev.vars TO VERSION CONTROL
+# ==========================================
+
+# Site Configuration
+# SITE_URL=http://localhost:8788
+# CONTACT_EMAIL=info@philipfitness.com
+
+# Email Service API Keys (choose one)
+# RESEND_API_KEY=re_xxxxxxxxxxxxx
+# MAILGUN_API_KEY=key-xxxxxxxxxxxxx
+# SENDGRID_API_KEY=SG.xxxxxxxxxxxxx
+
+# Future Django Backend Integration
+# DJANGO_API_URL=http://localhost:8000
+# API_KEY=your-secure-api-key-here
+
+# ==========================================
+# USAGE INSTRUCTIONS
+# ==========================================
+# 
+# 1. Copy this file:
+#    cp .dev.vars.example .dev.vars
+#
+# 2. Fill in your actual API keys in .dev.vars
+#
+# 3. For local development:
+#    wrangler pages dev public
+#    (Wrangler automatically loads .dev.vars)
+#
+# 4. For production:
+#    wrangler secret put RESEND_API_KEY
+#    (Enter your production API key when prompted)
+#
+# ==========================================
