@@ -71,41 +71,52 @@ export async function onRequestPost(context) {
         };
         
         // ============================================
-        // FUTURE: EMAIL INTEGRATION POINT
+        // EMAIL INTEGRATION - RESEND API
         // ============================================
-        // Option 1: Resend API
-        // const emailResult = await sendEmailViaResend(sanitizedData, env.RESEND_API_KEY);
-        
-        // Option 2: Mailgun API
-        // const emailResult = await sendEmailViaMailgun(sanitizedData, env.MAILGUN_API_KEY);
-        
-        // Option 3: SendGrid API
-        // const emailResult = await sendEmailViaSendGrid(sanitizedData, env.SENDGRID_API_KEY);
-        
-        // Option 4: Forward to Django backend
-        // const result = await forwardToDjangoBackend(sanitizedData, env.DJANGO_API_URL, env.API_KEY);
-        
-        // For now: Log to console and simulate success
-        console.log('Contact form submission received:', {
-            name: sanitizedData.name,
-            email: sanitizedData.email,
-            subject: sanitizedData.subject,
-            timestamp: sanitizedData.submittedAt
-        });
-        
-        // Simulate processing delay (remove in production)
-        await simulateDelay(500);
-        
-        // Return success response
-        return createJsonResponse({
-            success: true,
-            message: 'Thank you for your message! We\'ll get back to you within 24 hours.',
-            data: {
+        try {
+            // Send email via Resend API
+            const emailResult = await sendEmailViaResend(sanitizedData, env.RESEND_API_KEY);
+            
+            // Log successful submission
+            console.log('Contact form submitted and email sent:', {
                 name: sanitizedData.name,
                 email: sanitizedData.email,
-                timestamp: sanitizedData.submittedAt
-            }
-        }, 200);
+                subject: sanitizedData.subject,
+                timestamp: sanitizedData.submittedAt,
+                emailId: emailResult.id
+            });
+            
+            // Return success response
+            return createJsonResponse({
+                success: true,
+                message: 'Thank you for your message! We\'ll get back to you within 24 hours.',
+                data: {
+                    name: sanitizedData.name,
+                    email: sanitizedData.email,
+                    timestamp: sanitizedData.submittedAt
+                }
+            }, 200);
+            
+        } catch (emailError) {
+            // Log email sending error
+            console.error('Failed to send email:', emailError);
+            
+            // Return error response
+            return createJsonResponse({
+                success: false,
+                message: 'An error occurred while sending your message. Please try again later or contact us directly.',
+                error: emailError.message
+            }, 500);
+        }
+        
+        // Option 2: Mailgun API (kept for future use)
+        // const emailResult = await sendEmailViaMailgun(sanitizedData, env.MAILGUN_API_KEY);
+        
+        // Option 3: SendGrid API (kept for future use)
+        // const emailResult = await sendEmailViaSendGrid(sanitizedData, env.SENDGRID_API_KEY);
+        
+        // Option 4: Forward to Django backend (kept for future use)
+        // const result = await forwardToDjangoBackend(sanitizedData, env.DJANGO_API_URL, env.API_KEY);
         
     } catch (error) {
         console.error('Contact form error:', error);
@@ -193,24 +204,19 @@ function sanitizeInput(input) {
         .substring(0, 5000); // Limit length
 }
 
-/**
- * Simulate async delay (for demo purposes)
- */
-function simulateDelay(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-
 /* ==========================================
-   FUTURE EMAIL INTEGRATION FUNCTIONS
-   Uncomment and configure when ready
+   EMAIL INTEGRATION FUNCTIONS
    ========================================== */
 
 /**
  * Send email via Resend API
  * Docs: https://resend.com/docs/send-with-nodejs
  */
-/*
 async function sendEmailViaResend(data, apiKey) {
+    if (!apiKey) {
+        throw new Error('RESEND_API_KEY environment variable is not set');
+    }
+    
     const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
@@ -218,31 +224,49 @@ async function sendEmailViaResend(data, apiKey) {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            from: 'Philip Fitness <noreply@yourdomain.com>',
-            to: ['info@philipfitness.com'],
+            from: 'Philip Fitness <noreply@datumwork.com>',
+            to: ['jelithompson+testrecieve@gmail.com'],
             reply_to: data.email,
             subject: `New Contact Form: ${data.subject}`,
             html: `
-                <h2>New Contact Form Submission</h2>
-                <p><strong>Name:</strong> ${data.name}</p>
-                <p><strong>Email:</strong> ${data.email}</p>
-                <p><strong>Phone:</strong> ${data.phone || 'Not provided'}</p>
-                <p><strong>Subject:</strong> ${data.subject}</p>
-                <p><strong>Message:</strong></p>
-                <p>${data.message.replace(/\n/g, '<br>')}</p>
-                <hr>
-                <p><small>Submitted at: ${data.submittedAt}</small></p>
+                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+                    <h2 style="color: #FF6B35; border-bottom: 3px solid #FF6B35; padding-bottom: 10px;">New Contact Form Submission</h2>
+                    
+                    <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <p style="margin: 10px 0;"><strong>Name:</strong> ${data.name}</p>
+                        <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${data.email}">${data.email}</a></p>
+                        <p style="margin: 10px 0;"><strong>Phone:</strong> ${data.phone || 'Not provided'}</p>
+                        <p style="margin: 10px 0;"><strong>Subject:</strong> ${data.subject}</p>
+                    </div>
+                    
+                    <div style="margin: 20px 0;">
+                        <h3 style="color: #004E89;">Message:</h3>
+                        <p style="white-space: pre-wrap; background-color: #f9f9f9; padding: 15px; border-left: 4px solid #00C9A7; border-radius: 4px;">${data.message}</p>
+                    </div>
+                    
+                    <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;">
+                    
+                    <p style="color: #666; font-size: 12px;">
+                        <strong>Submitted at:</strong> ${new Date(data.submittedAt).toLocaleString('en-US', { timeZone: 'America/New_York' })}<br>
+                        <strong>User Agent:</strong> ${data.userAgent}
+                    </p>
+                </div>
             `
         })
     });
     
     if (!response.ok) {
-        throw new Error(`Resend API error: ${response.statusText}`);
+        const errorData = await response.text();
+        throw new Error(`Resend API error (${response.status}): ${errorData}`);
     }
     
     return await response.json();
 }
-*/
+
+/* ==========================================
+   ADDITIONAL EMAIL INTEGRATION OPTIONS
+   Uncomment and configure when needed
+   ========================================== */
 
 /**
  * Send email via Mailgun API

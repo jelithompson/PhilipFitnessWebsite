@@ -193,7 +193,7 @@ function initContactForm() {
             const formData = new FormData(contactForm);
             
             // Submit to Cloudflare Worker endpoint
-            const response = await fetch('/functions/contact', {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 body: formData
             });
